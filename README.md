@@ -1,6 +1,4 @@
-# Strategies
-
-Statistical Arbitrage using Pairs Trading
+#Statistical Arbitrage using Pairs Trading
 
 By Jayesh Kurup
 
