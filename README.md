@@ -4,29 +4,31 @@ By Jayesh Kurup
 
 History of Statistical Arbitrage:
 
-First developed and used in the mid 1980s by Nunzio Tartaglia’s quantitative group at Morgan Stanly
-Pair Trading is a “contrarian strategy” designed to harness mean-reverting behavior of the pair ratio
-David Shaw, founder of D.E Shaw & Co, left Morgan Stanley and started his own “Quant” trading firm in the late 1980s dealing mainly in pair trading
+This strategy was first developed and used in the mid 1980s by Nunzio Tartaglia’s quantitative group at Morgan Stanly.
+
+This is a mean reverting strategy to harness to behavior of similar securities
 
 What is Pairs Trading:
 
-Statistical arbitrage trading or pairs trading as it is commonly known is defined as trading one financial instrument or a basket of financial instruments – in most cases to create a value neutral basket.
+Statistical arbitrage trading or pairs trading as it is commonly known is defined as trading one financial instrument or a basket of financial instruments.
 
-It is the idea that a co-integrated pair is mean reverting in nature. There is a spread between the instruments and the further it deviates from its mean, the greater the probability of a reversal.
+The co-integrated pairs are usually mean reverting in nature viz after deviating from the mean, they tend to revert back at some point.
 
-Note however that statistical arbitrage is not a risk free strategy. Say for example that you have entered positions for a pair and then the spread picks up a trend rather than mean reverting.
+The farther the difference from the mean, greater is the probability of a reversal.
+
+Note however that statistical arbitrage is not a risk free strategy. For example one of the position taken for a pair, may pick up a trend than reverting back to the mean. We should hence define strickt thresholds to ascertain we dont incur tremendous loss.
 
 The Concept:
 
-Step 1: Find 2 related securities Find two securities that are in the same sector / industry, similar market capitalization and average volume traded is preffered.
+Step 1:  Find two securities that are in the same sector / industry, similar market capitalization and average volume traded is preffered. (Eg. Master Card (MA)/ Visa(V) ) 
 
-Step 2: Calculate the spread In the code to follow I used the pair ratio to indicate the spread. It is simply the price of asset A / price asset B.
+Step 2: Calculate the spread, I have used the pair ratio to indicate the spread. It is simply the log of price of security A / price security B.
 
-Step 3: Calculate the mean, standard deviation, and z-score of the pair ratio / spread.
+Step 3: Calculate the mean, standard deviation, and z-score of the pair ratio / spread and define strict thresholds for entry/exit
 
-Step 4: Test for co-integration In the code to follow I use the Augmented Dicky Fuller Test (ADF Test) to test for co-integration. The test has to reject the null hypothesis that the pair is not co-integrated.
+Step 4: Ensure securities are co integrated. I have used the Augmented Dicky Fuller Test (ADF Test) to test for co-integration. The test has to reject the null hypothesis that the pair is not co-integrated.
 
-Step 5: Generate trading signals Trading signals are based on the z-score, given they pass the test for co-integration. In my project I used a z-score of 1 as I noticed that other algorithms that I was competing with were using very low parameters. (I would have preferred a z-score of 2, as it better matches the literature, however it is less profitable)
+Step 5: Generate trading signals Trading signals are based on the z-score. In the project I have used a z-score of 2 and Stop Loss at 3, Take Profit at 0.5 (This can be varied and suited as per choice, see What If analysis in Excel for best combination)
 
 Step 6: Process transactions based on signals
 
